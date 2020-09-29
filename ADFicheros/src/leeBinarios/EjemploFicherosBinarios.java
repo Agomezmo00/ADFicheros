@@ -121,13 +121,21 @@ public class EjemploFicherosBinarios {
 		try {
 
 			Random edadRandom = new Random();
-			Animal perro = new Animal(edadRandom.nextInt(15), "Toby", "Podenco");
-
+			String[] nombres = {"Toby", "Rocky", "Vito", "Leona", "Daga", };
+			String[] razas = {"Podenco", "Galgo", "Labrador", "Pastor alemán", "Caniche"};
+			
+			
 			FileOutputStream escrituraOS = new FileOutputStream(fichero);
 			ObjectOutputStream objectOS = new ObjectOutputStream(escrituraOS);
-			objectOS.writeObject(perro);
-
-			System.out.println("1. Almacenando un objeto de tipo "+ perro.getClass() +" en el fichero: " + fichero.getName());
+			
+			
+			
+			System.out.println("1. Almacenando objetos en el fichero: " + fichero.getName());
+			
+			for(int i=0; i<nombres.length; i++) {
+				Animal perro = new Animal(edadRandom.nextInt(15), nombres[i], razas[i]);
+				objectOS.writeObject(perro);
+			}
 
 			objectOS.close();
 
@@ -149,9 +157,9 @@ public class EjemploFicherosBinarios {
 			while (true) {
 				animal = (Animal) objectIS.readObject();
 				System.out.println("");
-				System.out.println(animal.getNombre());
-				System.out.println(animal.getEdad());
-				System.out.println(animal.getRaza());
+				System.out.println("Nombre: "+ animal.getNombre());
+				System.out.println("Edad: "+ animal.getEdad());
+				System.out.println("Raza: "+ animal.getRaza());
 			}
 
 		} catch (EOFException ex) {
