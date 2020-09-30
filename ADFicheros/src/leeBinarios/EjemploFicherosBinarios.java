@@ -27,7 +27,7 @@ public class EjemploFicherosBinarios {
 		this.escribeIntEnFichero(fichero_primitivos);
 		this.leeIntDesdeFichero(fichero_primitivos);
 
-		this.escribeObjetoEnFichero(ficheroObjetos);
+		//this.escribeObjetoEnFichero(ficheroObjetos);
 		this.addObjetoEnFichero(ficheroObjetos);
 		this.leeObjetoDesdeFichero(ficheroObjetos);
 
@@ -121,13 +121,19 @@ public class EjemploFicherosBinarios {
 	public void escribeObjetoEnFichero(File fichero) {
 		try {
 			
-			FileOutputStream escrituraOS = new FileOutputStream(fichero, true);
+			FileOutputStream escrituraOS = new FileOutputStream(fichero);
 			ObjectOutputStream objectOS = new ObjectOutputStream(escrituraOS);
 			
 			System.out.println("1. Añadiendo un objeto en el fichero: " + fichero.getName());
 			Animal unPerro = new Animal(12, "Vueltas", "Golden retriever");
 			
 			objectOS.writeObject(unPerro);
+			
+			Animal otroPerro = new Animal(5, "Idas", "Westie");
+			
+			
+			objectOS.writeObject(otroPerro);
+			
 			objectOS.close();
 			
 		} catch (Exception ex) {
@@ -143,7 +149,7 @@ public class EjemploFicherosBinarios {
 
 			Random edadRandom = new Random();
 			String[] nombres = {"Toby", "Rocky", "Vito", "Leona", "Daga", };
-			String[] razas = {"Podenco", "Galgo", "Labrador", "Pastor alemÃ¡n", "Caniche"};
+			String[] razas = {"Podenco", "Galgo", "Labrador", "Pastor alemán", "Caniche"};
 			
 			
 			//Al crear el flujo de escritura pongo el true para que añada al contenido actual del fichero
