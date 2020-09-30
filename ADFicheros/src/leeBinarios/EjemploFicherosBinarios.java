@@ -27,7 +27,8 @@ public class EjemploFicherosBinarios {
 		this.escribeIntEnFichero(fichero_primitivos);
 		this.leeIntDesdeFichero(fichero_primitivos);
 
-		this.escribeObjetoEnFichero(ficheroObjetos);
+		//this.escribeObjetoEnFichero(ficheroObjetos);
+		this.addObjetoEnFichero(ficheroObjetos);
 		this.leeObjetoDesdeFichero(ficheroObjetos);
 
 	}
@@ -115,29 +116,63 @@ public class EjemploFicherosBinarios {
 		}
 
 	}
-
+	
+	
 	public void escribeObjetoEnFichero(File fichero) {
+		try {
+			
+			FileOutputStream escrituraOS = new FileOutputStream(fichero);
+			ObjectOutputStream objectOS = new ObjectOutputStream(escrituraOS);
+			
+			System.out.println("1. Añadiendo un objeto en el fichero: " + fichero.getName());
+			Animal unPerro = new Animal(12, "Vueltas", "Golden retriever");
+			
+			objectOS.writeObject(unPerro);
+			
+			Animal otroPerro = new Animal(5, "Idas", "Westie");
+			
+			
+			objectOS.writeObject(otroPerro);
+			
+			objectOS.close();
+			
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+	}
+	
+	
+
+	public void addObjetoEnFichero(File fichero) {
 		System.out.println("");
 		try {
 
 			Random edadRandom = new Random();
 			String[] nombres = {"Toby", "Rocky", "Vito", "Leona", "Daga", };
-			String[] razas = {"Podenco", "Galgo", "Labrador", "Pastor alemÃ¡n", "Caniche"};
+			String[] razas = {"Podenco", "Galgo", "Labrador", "Pastor alemán", "Caniche"};
 			
 			
-			FileOutputStream escrituraOS = new FileOutputStream(fichero);
-			ObjectOutputStream objectOS = new ObjectOutputStream(escrituraOS);
-			
-			
-			
-			System.out.println("1. Almacenando objetos en el fichero: " + fichero.getName());
+			//Al crear el flujo de escritura pongo el true para que añada al contenido actual del fichero
+				
+			MiObjectOutputStream miObjectOS = new MiObjectOutputStream(new FileOutputStream(fichero, true));
+			System.out.println("2. Añadiendo otros objetos en el fichero: " + fichero.getName());
 			
 			for(int i=0; i<nombres.length; i++) {
+				
+				/* //Esto no conviene hacerlo así, porque se guarda SIEMPRE el 
+				 * //objeto tal cual se ha creado con el constructor; "vueltas", "golden retriever"
+				 * 
+				 * perro.setEdad(edadRandom.nextInt(15)); 
+				 * perro.setNombre(nombres[i]);
+				 * perro.setRaza(razas[i]);
+				 */
+				
+				// En cambio, si se hace new para cada objeto, sí se guarda bien
 				Animal perro = new Animal(edadRandom.nextInt(15), nombres[i], razas[i]);
-				objectOS.writeObject(perro);
+				miObjectOS.writeObject(perro);
 			}
 
-			objectOS.close();
+			miObjectOS.close();
 
 		} catch (IOException ex) {
 			ex.printStackTrace();
@@ -146,7 +181,7 @@ public class EjemploFicherosBinarios {
 	}
 
 	public void leeObjetoDesdeFichero(File fichero) throws IOException, ClassNotFoundException {
-		System.out.println("2. Leyendo objetos desde un fichero");
+		System.out.println("3. Leyendo objetos desde un fichero");
 		
 		try {
 
@@ -154,16 +189,24 @@ public class EjemploFicherosBinarios {
 			ObjectInputStream objectIS = new ObjectInputStream(lecturaIS);
 
 			Animal animal;
-			while (true) {
-				animal = (Animal) objectIS.readObject();
+			
+			animal = (Animal) objectIS.readObject();
+			
+			while (animal != null) {
 				System.out.println("");
 				System.out.println("Nombre: "+ animal.getNombre());
 				System.out.println("Edad: "+ animal.getEdad());
 				System.out.println("Raza: "+ animal.getRaza());
+				animal = (Animal) objectIS.readObject();
 			}
+			
+			objectIS.close();
+			
 
 		} catch (EOFException ex) {
 			System.out.println("Fin del fichero");
+		} catch (Exception ex) {
+			ex.printStackTrace();
 		}
 
 	}
