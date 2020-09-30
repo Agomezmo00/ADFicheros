@@ -4,14 +4,16 @@ import java.io.IOException;
 
 import leeBinarios.EjemploFicherosBinarios;
 import leeTexto.*;
+import ficherosAleatorios.AccesoFicheroAleatorio;
 
 public class Inicial {
 
 	public static void main(String[] args) throws ClassNotFoundException {
 		// TODO Auto-generated method stub
-		binarios();
+		//binarios();
 		//texto();
 		//entradaTeclado();
+		aleatorios();
 
 	}
 	
@@ -46,6 +48,17 @@ public class Inicial {
 			ldl.ejemploLeeLinea();
 		} catch (IOException ioex) {
 			ioex.printStackTrace();
+		}
+		
+	}
+	
+	public static void aleatorios()  {
+		AccesoFicheroAleatorio afa = new AccesoFicheroAleatorio();
+		
+		try {
+			afa.operacionConFicheroAleatorio();
+		} catch (IOException ex) {
+			ex.printStackTrace();
 		}
 		
 	}
