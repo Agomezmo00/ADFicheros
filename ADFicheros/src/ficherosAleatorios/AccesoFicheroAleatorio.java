@@ -24,11 +24,11 @@ public class AccesoFicheroAleatorio {
 
 		try {
 			archivo = new RandomAccessFile(fichero, "rw");
-			System.out.println("El tamaÃ±o es: " + archivo.length());
+			System.out.println("El tamaño es: " + archivo.length());
 			do {
 				try {
 					// Lee el fichero letra a letra y cuando encuentra una i la reemplaza por una I
-					// mayÃºscula.
+					// mayúscula.
 					c = (char) archivo.readByte();
 					if (c == 'i') {
 
@@ -139,8 +139,24 @@ public class AccesoFicheroAleatorio {
 			
 			
 			
-			contacto.setNombre("Julio");
+			contacto.setNombre("Julio Iglesias");
+			contacto.setDeuda(2020);
+			contacto.setDireccion("Paseo de la corona, 2");
 			agenda.escribir(contacto, 2);
+			
+			
+			Registro cambiado = new Registro();
+			cambiado = agenda.leer(2);
+			
+			System.out.println(" ");
+			System.out.println(cambiado.getNombre());
+			System.out.println(cambiado.getDeuda());
+			System.out.println(cambiado.getEmail());
+			System.out.println(cambiado.getTelefono());
+			System.out.println(cambiado.getNacimiento());
+			System.out.println(cambiado.getDireccion());
+			
+			System.out.println(" ");
 			
 			
 		

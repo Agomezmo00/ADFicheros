@@ -26,7 +26,7 @@ public class Contactos {
 	}	
 	
 	
-	// Escribir un registro en una posiciÃ³n cualquiera
+	// Escribir un registro en una posición cualquiera
 	public void escribir(Registro registro, int pos) throws IOException {
 		if(file != null) {
 			

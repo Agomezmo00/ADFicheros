@@ -56,10 +56,10 @@ public class Inicial {
 		AccesoFicheroAleatorio afa = new AccesoFicheroAleatorio();
 		
 		
-		afa.uppercaseRandomAccessFile();
+		//afa.uppercaseRandomAccessFile();
 		
 		//afa.ejemploAgendaSecuencial();
-		//afa.ejemploAgendaAleatorio();
+		afa.ejemploAgendaAleatorio();
 		
 		
 	}
