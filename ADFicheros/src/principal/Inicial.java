@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import leeBinarios.EjemploFicherosBinarios;
 import leeTexto.*;
+import xmlDOM.CrearXmlDom;
 import ficherosAleatorios.AccesoFicheroAleatorio;
 
 public class Inicial {
@@ -13,8 +14,8 @@ public class Inicial {
 		//binarios();
 		//texto();
 		//entradaTeclado();
-		aleatorios();
-
+		//aleatorios();
+		xmlConDOM();
 	}
 	
 	
@@ -62,6 +63,17 @@ public class Inicial {
 		afa.ejemploAgendaAleatorio();
 		
 		
+	}
+	
+	public static void xmlConDOM() {
+		CrearXmlDom cxml = new CrearXmlDom(); 
+		try {
+			cxml.creaXmlDesdeAleatorio();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			e.printStackTrace();
+		}
 	}
 
 }
