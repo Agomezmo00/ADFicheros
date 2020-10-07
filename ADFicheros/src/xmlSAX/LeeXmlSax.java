@@ -65,6 +65,17 @@ public class LeeXmlSax {
                     if (qName.equalsIgnoreCase("telefono")) {
                         bTelefono = true;
                     }
+                    
+                    if(attributes.getLength() > 0) {
+                    	System.out.println("Hay " + attributes.getLength()+ " ATRIBUTOS");
+                    	
+                    	for(int i=0; i<attributes.getLength(); i++) {
+                    	
+                    	System.out.println(attributes.getQName(i));
+                    	System.out.println(attributes.getValue(i));
+                    	}
+                    }
+                    
                 }
 
                 public void endElement(String uri, String localName, String qName) throws SAXException {
