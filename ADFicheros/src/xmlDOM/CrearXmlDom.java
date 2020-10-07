@@ -1,15 +1,24 @@
 package xmlDOM;
 
-import org.w3c.dom.*;
+import java.io.File;
+import java.io.IOException;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.transform.Result;
+import javax.xml.transform.Source;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+
+import org.w3c.dom.DOMImplementation;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Text;
 
 import ficherosAleatorios.Contactos;
 import ficherosAleatorios.Registro;
-
-import javax.xml.parsers.*;
-import javax.xml.transform.*;
-import javax.xml.transform.dom.*;
-import javax.xml.transform.stream.*;
-import java.io.*;
 
 public class CrearXmlDom {
 	public void creaXmlDesdeAleatorio() throws IOException {
@@ -26,14 +35,13 @@ public class CrearXmlDom {
 
 			
 			
-			int index = 1;
+			
 			for (int i = 0; i<10; i++) {
-				if (i % 2 == 0) {
-					index = 2;
-				} else {
-					index = 1;
-				}
-				Registro contacto = leerContacto(index);
+				
+
+				Registro contacto = new Registro();
+				// Tengo un método que me devuelve contactos aleatorios para introducirlos en el XML
+				contacto.getContactoRandom();
 
 				Element raiz = document.createElement("contacto"); // nodo contacto
 				document.getDocumentElement().appendChild(raiz);
@@ -41,34 +49,23 @@ public class CrearXmlDom {
 						
 						// añadir datos al fichero
 						CrearElemento("deuda", Double.toString(contacto.getDeuda()), raiz, document);
-						
 						CrearElemento("nombre", contacto.getNombre().trim(), raiz, document);
-						
 						CrearElemento("email", contacto.getEmail().trim(), raiz, document);
-						
 						CrearElemento("telefono", contacto.getTelefono().trim(), raiz, document);
-						
 						CrearElemento("direccion", contacto.getDireccion().trim(), raiz, document);
-						
-						CrearElemento("grupo", Integer.toString(contacto.getGrupo()), raiz, document);
-						
+						CrearElemento("grupo", Integer.toString(contacto.getGrupo()), raiz, document);	
 						CrearElemento("fecha_nac", contacto.getNacimiento().toString().trim(), raiz, document);
 
 			}
 			
-				
-			
-		
-
-			Source source = new DOMSource(document);
 			Result result = new StreamResult(fichero_agenda_xml);
+			Source source = new DOMSource(document);
+			
 			Transformer transformer = TransformerFactory.newInstance().newTransformer();
 			transformer.transform(source, result);
 			
+			this.leerDocumentoXml(transformer, source);
 			
-			// MOSTRAR EL DOCUMENTO POR CONSOLA
-		    Result console = new StreamResult(System.out);
-		    transformer.transform(source, console);	 
 
 		} catch (Exception e) {
 			System.err.println("Error: " + e);
@@ -83,6 +80,23 @@ public class CrearXmlDom {
 		Text text = document.createTextNode(valor); // damos valor
 		raiz.appendChild(elem); // pegamos el elemento hijo a la raiz
 		elem.appendChild(text); // pegamos el valor
+	}
+	
+	
+	public void leerDocumentoXml(Transformer transformer, Source source) {
+		
+		try {
+			
+			
+			
+			// MOSTRAR EL DOCUMENTO POR CONSOLA
+		    Result console = new StreamResult(System.out);
+		    transformer.transform(source, console);
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		
+		
 	}
 
 	

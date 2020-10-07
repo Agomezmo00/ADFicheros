@@ -6,6 +6,8 @@ import leeBinarios.EjemploFicherosBinarios;
 import leeTexto.*;
 import xmlDOM.CrearXmlDom;
 import xmlSAX.LeeXmlSax;
+import xmlXstream.EscribirContactos;
+import xmlXstream.LeerContactos;
 import ficherosAleatorios.AccesoFicheroAleatorio;
 
 public class Inicial {
@@ -17,7 +19,8 @@ public class Inicial {
 		//entradaTeclado();
 		//aleatorios();
 		//xmlConDOM();
-		xmlConSax();
+		//xmlConSax();
+		xmlConXStream();
 	}
 	
 	
@@ -83,5 +86,24 @@ public class Inicial {
 		lxs.leeFichero();
 		
 	}
+	
+	public static void xmlConXStream() {
+		EscribirContactos ec = new EscribirContactos();
+		try {
+		ec.escribeContactosEnFicheroXML();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		
+		LeerContactos lc = new LeerContactos();
+		try {
+			lc.leeContactosDeFicheroXML();
+		} catch(Exception ex) {
+			ex.printStackTrace();
+		}
+		
+	}
+	
+	
 
 }
