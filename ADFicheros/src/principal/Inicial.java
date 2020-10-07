@@ -5,6 +5,7 @@ import java.io.IOException;
 import leeBinarios.EjemploFicherosBinarios;
 import leeTexto.*;
 import xmlDOM.CrearXmlDom;
+import xmlSAX.LeeXmlSax;
 import ficherosAleatorios.AccesoFicheroAleatorio;
 
 public class Inicial {
@@ -15,7 +16,8 @@ public class Inicial {
 		//texto();
 		//entradaTeclado();
 		//aleatorios();
-		xmlConDOM();
+		//xmlConDOM();
+		xmlConSax();
 	}
 	
 	
@@ -74,6 +76,12 @@ public class Inicial {
 			e.printStackTrace();
 			e.printStackTrace();
 		}
+	}
+	
+	public static void xmlConSax() {
+		LeeXmlSax lxs = new LeeXmlSax();
+		lxs.leeFichero();
+		
 	}
 
 }
