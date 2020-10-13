@@ -9,6 +9,7 @@ import xmlSAX.LeeXmlSax;
 import xmlXstream.EscribirContactos;
 import xmlXstream.LeerContactos;
 import ficherosAleatorios.AccesoFicheroAleatorio;
+import xmlJAXB.EjemploJAXB;
 
 public class Inicial {
 
@@ -20,7 +21,8 @@ public class Inicial {
 		//aleatorios();
 		//xmlConDOM();
 		//xmlConSax();
-		xmlConXStream();
+		//xmlConXStream();
+		xmlConJaxb();
 	}
 	
 	
@@ -102,6 +104,11 @@ public class Inicial {
 			ex.printStackTrace();
 		}
 		
+	}
+	
+	public static void xmlConJaxb() {		
+		EjemploJAXB ejemplo = new EjemploJAXB();
+		ejemplo.operacionesConJaxb();
 	}
 	
 	

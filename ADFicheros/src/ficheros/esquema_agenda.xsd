@@ -1,0 +1,21 @@
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="Agenda">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="contacto" maxOccurs="unbounded" minOccurs="0">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type="xs:float" name="deuda"/>
+              <xs:element type="xs:string" name="nombre"/>
+              <xs:element type="xs:string" name="email"/>
+              <xs:element type="xs:int" name="telefono"/>
+              <xs:element type="xs:string" name="direccion"/>
+              <xs:element type="xs:byte" name="grupo"/>
+              <xs:element type="xs:string" name="fecha_nac"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

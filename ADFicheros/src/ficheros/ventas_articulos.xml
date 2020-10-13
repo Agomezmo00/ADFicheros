@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ventasarticulos>
+    <articulo>
+        <codigo>12345678</codigo>
+        <denominacion>Forro polar de alta densidad</denominacion>
+        <stock>53</stock>
+        <precio>65.95</precio>
+    </articulo>
+    <ventas>
+        <venta>
+            <numventa>0</numventa>
+            <unidades>1</unidades>
+            <nombrecliente>nombrecliente</nombrecliente>
+            <fecha>fecha</fecha>
+        </venta>
+        <venta>
+            <numventa>1</numventa>
+            <unidades>2</unidades>
+            <nombrecliente>Paco Perez</nombrecliente>
+            <fecha>21-11-2017</fecha>
+        </venta>
+        <venta>
+            <numventa>3</numventa>
+            <unidades>4</unidades>
+            <nombrecliente>Pepito Pérez</nombrecliente>
+            <fecha>14-10-2020</fecha>
+        </venta>
+    </ventas>
+</ventasarticulos>
