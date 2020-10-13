@@ -2,6 +2,8 @@ package principal;
 
 import java.io.IOException;
 
+import javax.xml.bind.JAXBException;
+
 import leeBinarios.EjemploFicherosBinarios;
 import leeTexto.*;
 import xmlDOM.CrearXmlDom;
@@ -10,6 +12,7 @@ import xmlXstream.EscribirContactos;
 import xmlXstream.LeerContactos;
 import ficherosAleatorios.AccesoFicheroAleatorio;
 import xmlJAXB.EjemploJAXB;
+import jaxbLibros.Ejemplo1_JAXB;
 
 public class Inicial {
 
@@ -22,7 +25,8 @@ public class Inicial {
 		//xmlConDOM();
 		//xmlConSax();
 		//xmlConXStream();
-		xmlConJaxb();
+		//xmlConJaxb();
+		jaxbLibros();
 	}
 	
 	
@@ -109,6 +113,18 @@ public class Inicial {
 	public static void xmlConJaxb() {		
 		EjemploJAXB ejemplo = new EjemploJAXB();
 		ejemplo.operacionesConJaxb();
+	}
+	
+	public static void jaxbLibros() {
+		
+		try {
+		Ejemplo1_JAXB ej = new Ejemplo1_JAXB();
+		ej.operacionesLibrosJaxb();
+		} catch (JAXBException ex) {
+			ex.printStackTrace();
+		} catch (IOException ex) {
+			ex.printStackTrace();
+		}
 	}
 	
 	
