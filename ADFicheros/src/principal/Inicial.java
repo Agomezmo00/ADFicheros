@@ -13,10 +13,11 @@ import xmlXstream.LeerContactos;
 import ficherosAleatorios.AccesoFicheroAleatorio;
 import xmlJAXB.EjemploJAXB;
 import jaxbLibros.Ejemplo1_JAXB;
+import jaxbLibrosGenerado.EjemploConBeansGenerados;
 
 public class Inicial {
 
-	public static void main(String[] args) throws ClassNotFoundException, IOException {
+	public static void main(String[] args) throws ClassNotFoundException, IOException, JAXBException {
 		// TODO Auto-generated method stub
 		//binarios();
 		//texto();
@@ -26,7 +27,8 @@ public class Inicial {
 		//xmlConSax();
 		//xmlConXStream();
 		//xmlConJaxb();
-		jaxbLibros();
+		//jaxbLibros();
+		jaxLibrosGenerados();
 	}
 	
 	
@@ -125,6 +127,11 @@ public class Inicial {
 		} catch (IOException ex) {
 			ex.printStackTrace();
 		}
+	}
+	
+	public static void jaxLibrosGenerados() throws JAXBException {
+		EjemploConBeansGenerados ecbg = new EjemploConBeansGenerados();
+		ecbg.crearFicheroXMLConObjetos();
 	}
 	
 	

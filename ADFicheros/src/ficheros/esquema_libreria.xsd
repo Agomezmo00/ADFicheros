@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Created with Liquid Technologies Online Tools 1.0 (https://www.liquid-technologies.com) -->
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="libreria">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="ListaLibros">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" name="Libro">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="autor" type="xs:string" />
+                    <xs:element name="nombre" type="xs:string" />
+                    <xs:element name="editorial" type="xs:string" />
+                    <xs:element name="isbn" type="xs:string" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="lugar" type="xs:string" />
+        <xs:element name="nombre" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
