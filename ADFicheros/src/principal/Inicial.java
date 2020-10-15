@@ -131,7 +131,7 @@ public class Inicial {
 	
 	public static void jaxLibrosGenerados() throws JAXBException {
 		EjemploConBeansGenerados ecbg = new EjemploConBeansGenerados();
-		ecbg.crearFicheroXMLConObjetos();
+		ecbg.operacionesLibrosJaxb();
 	}
 	
 	
